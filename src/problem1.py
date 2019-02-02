@@ -28,6 +28,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 import testing_helper
 import time
+import math
 
 
 def main():
@@ -38,7 +39,7 @@ def main():
 
 
 ###############################################################################
-# TODO: 2.  READ the green doc-string for the:
+# DONE: 2.  READ the green doc-string for the:
 #   - is_prime
 #   - sum_of_digits
 # functions defined below.  You do NOT need to understand their
@@ -148,7 +149,15 @@ def run_test_problem1a():
     #   print('Test 1 expected:', expected)
     #   print('       actual:  ', actual)
     # -------------------------------------------------------------------------
+    expected = -0.265
+    actual = problem1a(10, 15)
+    print('Test 3 expected', expected)
+    print('         actual', actual)
 
+    expected = -0.03
+    actual = problem1a(3, 47)
+    print('Test 4 expected', expected)
+    print('         actual', actual)
 
 def problem1a(m, n):
     """
@@ -176,12 +185,17 @@ def problem1a(m, n):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     # -------------------------------------------------------------------------
+    if abs(m) <= abs(n):
+        total = 0
+        for k in range((m ** 2), (n ** 2) + 1):
+            total = total + math.sin(k)
+        return total
 
 
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement this TEST function.
+    # DONE: 5. Implement this TEST function.
     #   It TESTS the  problem1b  function defined below.
     #   Include at least **   4   ** tests.  Use the usual form:
     #
@@ -199,6 +213,25 @@ def run_test_problem1b():
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
 
+    expected = 5
+    actual = problem1b(3, 5)
+    print('Test 1 expected', expected)
+    print('         actual', actual)
+
+    expected = 1
+    actual = problem1b(2, 1)
+    print('Test 2 expected', expected)
+    print('         actual', actual)
+
+    expected = 44
+    actual = problem1b(5, 40)
+    print('Test 3 expected', expected)
+    print('         actual', actual)
+
+    expected = 12
+    actual = problem1b(7, 7)
+    print('Test 4 expected', expected)
+    print('         actual', actual)
 
 def problem1b(m, f):
     """
@@ -217,7 +250,7 @@ def problem1b(m, f):
            since there are 44 primes between 5 and 200.
      """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     ###########################################################################
@@ -230,7 +263,12 @@ def problem1b(m, f):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 to 15 minutes.
     # -------------------------------------------------------------------------
-
+    if m >= 2:
+        count = 0
+        for k in range(m, (m * f) + 1):
+            if is_prime(k) is True:
+                count = count + 1
+        return count
 
 def run_test_problem1c():
     """ Tests the   problem1c   function. """
