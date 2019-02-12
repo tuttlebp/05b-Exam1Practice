@@ -113,16 +113,23 @@ def problem2a(circle, rectangle, window):
     # -------------------------------------------------------------------------
     circle.attach_to(window)
     rectangle.attach_to(window)
+
+    window.render(1)
+    window.continue_on_mouse_click()
+
     c1x = rectangle.corner_1.x
     c2x = rectangle.corner_2.x
     c1y = rectangle.corner_1.y
     c2y = rectangle.corner_2.y
 
-    x = c1x + (c2x - c1x)
-    y = c2y - c1y
     line = rg.Line(rg.Point(c2x, c1y), rg.Point(c1x, c2y))
     line.attach_to(window)
-    window.render()
+    window.render(1)
+    window.continue_on_mouse_click()
+
+    circle.fill_color = rectangle.outline_color
+    circle.attach_to(window)
+    window.render(1)
 
 
 
